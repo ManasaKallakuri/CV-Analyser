@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import {Card,Button} from "react-bootstrap"
+import {Card,Button, Container, Row, Col, Form} from "react-bootstrap"
 
 class Login extends Component{
     constructor(){
@@ -27,37 +27,46 @@ class Login extends Component{
 
     render(){
         return(
-                <Card style = {{width: '18rem'}}>
-               <Card.Body>
+        <Container>
+        <Row className="justify-content-md-center">
+        {/* <Col> */}
+    
+        <Card style = {{width: '22rem', height: '30rem'}} className="text-center shadow-box-example">
+                <Card.Body>
                    <Card.Title>
                        Welcome!
                    </Card.Title>
-                   <form>
-                   <input 
-                    type = "email" 
-                    value = {this.state.email} 
-                    onChange = {this.handleChange}
-                    placeholder = "Email"
-                    name = "email"></input>
-                   <br/>
-                   <input 
-                    type = "text" 
-                    value = {this.state.password}
-                    onChange = {this.handleChange} 
-                    placeholder = "Password"
-                    name = "password"></input>
-                   <br/>
-                   <br/>
-                   <Button 
-                    onSubmit ={this.handleSubmit}
-                    type= "submit" 
-                    variant="info">Sign in</Button>
-                   </form>
+                <Form>
+                    <Form.Group as = {Row} controlId="formBasicEmail">
+                        <Col>
+                        <Form.Control type="email" placeholder="Enter Email" />
+                        </Col>
+                        
+                    </Form.Group>
+
+                    <Form.Group as = {Row} controlId="formBasicPassword">
+                    <Col>
+                    <Form.Control type="password" placeholder="Password" />
+                    </Col>
+                        
+                    </Form.Group>
+
+                    <Form.Group as={Row}>
+                        <Col sm={{ span: 10, offset: 5 }}>
+                        <Button variant="primary "type="submit">Sign in</Button>
+                        </Col>
+                    </Form.Group>
+                </Form>
                    <Card.Text>Don't have an account?
                        <a href = "">Sign Up</a>
                     </Card.Text>
                </Card.Body>
             </Card>
+
+        {/* </Col>         */}
+        </Row>
+    </Container>
+            
             
             
            
