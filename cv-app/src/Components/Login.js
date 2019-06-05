@@ -29,7 +29,7 @@ class Login extends Component{
         return(
         <Container>
         <Row className="justify-content-md-center">
-        {/* <Col> */}
+    
     
         <Card style = {{width: '22rem', height: '30rem'}} className="text-center shadow-box-example">
                 <Card.Body>
@@ -63,7 +63,7 @@ class Login extends Component{
                </Card.Body>
             </Card>
 
-        {/* </Col>         */}
+        
         </Row>
     </Container>
             
