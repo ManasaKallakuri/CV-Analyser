@@ -12,6 +12,10 @@ class Login extends Component{
             this.handleChange = this.handleChange.bind(this)
         
     }
+
+    Validate(){
+        return this.state.email.length>0 && this.state.password.length>0
+    }
     
     handleChange = event =>{
         this.setState(
@@ -44,15 +48,15 @@ class Login extends Component{
                         </Col>
                     </Form.Group>
 
-                    <Form.Group as = {Row}>
+                    <Form.Group as = {Row} controlId="formBasicPassword">
                     <Col>
-                    <Form.Control name="password" value={this.state.password} onChange={this.handleChange} type="password" placeholder="Password" />
+                    <Form.Control placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} type="password"/>
                     </Col>
                     </Form.Group>
 
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 5 }}>
-                        <Button variant="primary "type="submit">Sign in</Button>
+                        <Button variant="primary "type="submit" disabled={!this.Validate()}>Sign in</Button>
                         </Col>
                     </Form.Group>
 
