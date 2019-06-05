@@ -31,7 +31,7 @@ class SignUp extends Component{
         return(
             <Container>
             <Row className="justify-content-md-center">
-            <Card style = {{width: '22rem', height: '18rem'}}>
+            <Card style = {{width: '22rem', height: '25rem'}} className="text-center">
                 <Card.Body>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group as = {Row} controlId="formFirstName">

@@ -1,6 +1,6 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
 
 import Login from "./Components/SignUp"
 
