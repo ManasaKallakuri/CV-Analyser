@@ -6,8 +6,8 @@ class Login extends Component{
         super()
 
         this.state = {
-            email: " ",
-            password: " "
+            email: '',
+            password: ''
         }
             this.handleChange = this.handleChange.bind(this)
         
@@ -40,7 +40,7 @@ class Login extends Component{
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group as = {Row} controlId="formBasicEmail">
                         <Col>
-                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Enter Email" />
+                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Email ID" />
                         </Col>
                     </Form.Group>
 

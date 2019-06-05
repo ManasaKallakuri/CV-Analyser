@@ -6,11 +6,11 @@ class SignUp extends Component{
         super()
 
         this.state = {
-            firstname: " ",
-            lastname: " ",
-            email: " ",
-            password: " ",
-            confirmpassword: " ",
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+            confirmpassword: '',
         }
     }
 
@@ -30,9 +30,14 @@ class SignUp extends Component{
     render(){
         return(
             <Container>
+            <div as= {Row}> <br/> <br/> <br/> <br/><br/><br/></div> 
             <Row className="justify-content-md-center">
-            <Card style = {{width: '22rem', height: '25rem'}} className="text-center">
+            <Card style = {{width: '22rem'}} className="text-center">
                 <Card.Body>
+                <Card.Title>
+                    Sign Up
+                </Card.Title>
+                <br/>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group as = {Row} controlId="formFirstName">
                         <Col>
@@ -48,7 +53,7 @@ class SignUp extends Component{
 
                     <Form.Group as = {Row} controlId="formBasicEmail">
                         <Col>
-                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Enter Email" />
+                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Email ID" />
                         </Col>
                     </Form.Group>
 
