@@ -28,10 +28,11 @@ class Login extends Component{
     render(){
         return(
         <Container>
+        <div as= {Row}> <br/> <br/> <br/> <br/><br/><br/></div> 
         <Row className="justify-content-md-center">
-        {/* <Col> */}
+        {/* <Col className = "align-item-center"> */}
     
-        <Card style = {{width: '22rem', height: '30rem'}} className="text-center shadow-box-example">
+        <Card style = {{width: '22rem'}} className="text-center">
                 <Card.Body>
                    <Card.Title>
                        Welcome!
@@ -65,11 +66,7 @@ class Login extends Component{
 
         {/* </Col>         */}
         </Row>
-    </Container>
-            
-            
-            
-           
+    </Container>     
         );
     }
 }
