@@ -14,6 +14,15 @@ class SignUp extends Component{
         }
     }
 
+    ValidateForm(){
+        return(
+            this.state.email.length>0 &&
+            this.state.password.length>0 &&
+            this.state.password === this.state.confirmpassword
+        );
+    }
+
+
     handleChange = event =>{
         this.setState(
             {
@@ -41,13 +50,13 @@ class SignUp extends Component{
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group as = {Row} controlId="formFirstName">
                         <Col>
-                        <Form.Control name="firstname" value={this.state.firstname} onChange={this.handleChange} type="text" placeholder="FirstName" />
+                        <Form.Control name="firstname" value={this.state.firstname} onChange={this.handleChange} type="name" placeholder="FirstName" />
                         </Col>
                     </Form.Group>
 
                     <Form.Group as = {Row} controlId="formLastName">
                         <Col>
-                        <Form.Control name="lastname" value={this.state.lastname} onChange={this.handleChange} type="text" placeholder="LastName" />
+                        <Form.Control name="lastname" value={this.state.lastname} onChange={this.handleChange} type="t" placeholder="LastName" />
                         </Col>
                     </Form.Group>
 
@@ -59,19 +68,19 @@ class SignUp extends Component{
 
                     <Form.Group as = {Row} controlId="formBasicPassword">
                     <Col>
-                    <Form.Control name="password" value={this.state.password} onChange={this.handleChange}type="password" placeholder="Password" />
+                    <Form.Control name="password" value={this.state.password} onChange={this.handleChange} type="password" placeholder="Password" />
                     </Col>
                     </Form.Group>
 
                     <Form.Group as = {Row} controlId="formConfirmPassword">
                     <Col>
-                    <Form.Control name="confirmpassword" value={this.state.confirmpassword} onChange={this.handleChange}type="password" placeholder="Confirm Password" />
+                    <Form.Control name="confirmpassword" value={this.state.confirmpassword} onChange={this.handleChange} type="password" placeholder="Confirm Password" />
                     </Col>
                     </Form.Group>
 
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 5 }}>
-                        <Button variant="primary "type="submit">Sign Up</Button>
+                        <Button variant="primary" type="submit" disabled={!this.ValidateForm()} >Sign Up</Button>
                         </Col>
                     </Form.Group>
 
