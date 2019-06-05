@@ -1,5 +1,5 @@
 import React,{Component} from "react"
-import {Card,Button} from "react-bootstrap"
+import {Card,Button,Container,Row,Col,Form} from "react-bootstrap"
 
 class SignUp extends Component{
     constructor(){
@@ -28,71 +28,59 @@ class SignUp extends Component{
 
    
     render(){
-        let cardstyle = {
-            width : '20rem',
-            margin: 0 ,
-            marginBottom: '10px',
-    
-        }
-
         return(
-            <Card style = {cardstyle} class = "float-none">
+            <Container>
+            <Row className="justify-content-md-center">
+            <Card style = {{width: '22rem', height: '18rem'}}>
                 <Card.Body>
-                    <form>
-                        <input 
-                            type = "text"
-                            name = "firstname"
-                            placeholder = "FirstName"
-                            onChange = {this.handleChange}
-                            value = {this.state.firstname}>
-                        </input>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group as = {Row} controlId="formFirstName">
+                        <Col>
+                        <Form.Control name="firstname" value={this.state.firstname} onChange={this.handleChange} type="text" placeholder="FirstName" />
+                        </Col>
+                    </Form.Group>
 
-                        <input 
-                            type = "text"
-                            name = "lastname"
-                            placeholder = "LastName"
-                            onChange = {this.handleChange}
-                            value = {this.state.Lastname}>
-                        </input>
+                    <Form.Group as = {Row} controlId="formLastName">
+                        <Col>
+                        <Form.Control name="lastname" value={this.state.lastname} onChange={this.handleChange} type="text" placeholder="LastName" />
+                        </Col>
+                    </Form.Group>
 
-                        <input 
-                            type = "email"
-                            name = "email"
-                            placeholder = "Email"
-                            onChange = {this.handleChange}
-                            value = {this.state.email}>
-                        </input>
+                    <Form.Group as = {Row} controlId="formBasicEmail">
+                        <Col>
+                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Enter Email" />
+                        </Col>
+                    </Form.Group>
 
-                        <input 
-                            type = "text"
-                            name = "password"
-                            placeholder = "Password"
-                            onChange = {this.handleChange}
-                            value = {this.state.password}>
-                        </input>
+                    <Form.Group as = {Row} controlId="formBasicPassword">
+                    <Col>
+                    <Form.Control name="password" value={this.state.password} onChange={this.handleChange}type="password" placeholder="Password" />
+                    </Col>
+                    </Form.Group>
 
-                        <input 
-                            type = "text"
-                            name = "confirmpassword"
-                            placeholder = "ConfirmPassword"
-                            onChange = {this.handleChange}
-                            value = {this.state.confirmpassword}>
-                        </input>
-                        <br/>
-                        <br/>
+                    <Form.Group as = {Row} controlId="formConfirmPassword">
+                    <Col>
+                    <Form.Control name="confirmpassword" value={this.state.confirmpassword} onChange={this.handleChange}type="password" placeholder="Confirm Password" />
+                    </Col>
+                    </Form.Group>
 
-                        <Button 
-                            onSubmit ={this.handleSubmit}
-                            type= "submit" 
-                            variant="info">Sign Up</Button>
+                    <Form.Group as={Row}>
+                        <Col sm={{ span: 10, offset: 5 }}>
+                        <Button variant="primary "type="submit">Sign Up</Button>
+                        </Col>
+                    </Form.Group>
 
-                        <br/>
-                        <br/>
-                        <div class="g-signin2" data-width="210" data-height="50" data-longtitle="true"></div>
+                </Form>
 
-                    </form>
+                    <Card.Text>Have an account?
+                       <a href = "">Sign In</a>
+                    </Card.Text>
+
                 </Card.Body>
             </Card>
+
+            </Row>
+            </Container>
 
 
         );
