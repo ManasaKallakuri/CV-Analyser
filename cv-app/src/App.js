@@ -1,29 +1,24 @@
-import React from 'react'
+import React,{Component} from 'react'
 import './App.css'
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
+import { Router, Route, Link, IndexRoute, hashHistory,browserHistory} from 'react-router'
+//import browserHistory from 'react-router-dom'
 
-import Login from "./Components/SignUp"
+import Login from "./Components/Login"
+import SignUp from "./Components/SignUp"
 
 function App() {
   return (
-    /*<div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>*/
-    <Login />
+    <SignUp />
   );
 }
+
+// class App extends Component{
+//   render(){
+//     return(
+
+//     )
+//   }
+
+// }
 
 export default App;
