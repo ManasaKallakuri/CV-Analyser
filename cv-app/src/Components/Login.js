@@ -31,24 +31,22 @@ class Login extends Component{
         <Row className="justify-content-md-center">
     
     
-        <Card style = {{width: '22rem', height: '30rem'}} className="text-center shadow-box-example">
+        <Card style = {{width: '22rem', height: '18rem'}} className= "text-center">
                 <Card.Body>
                    <Card.Title>
                        Welcome!
                    </Card.Title>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group as = {Row} controlId="formBasicEmail">
                         <Col>
-                        <Form.Control type="email" placeholder="Enter Email" />
+                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Enter Email" />
                         </Col>
-                        
                     </Form.Group>
 
-                    <Form.Group as = {Row} controlId="formBasicPassword">
+                    <Form.Group as = {Row}>
                     <Col>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control name="password" value={this.state.password} onChange={this.handleChange} type="password" placeholder="Password" />
                     </Col>
-                        
                     </Form.Group>
 
                     <Form.Group as={Row}>
@@ -56,10 +54,13 @@ class Login extends Component{
                         <Button variant="primary "type="submit">Sign in</Button>
                         </Col>
                     </Form.Group>
+
                 </Form>
-                   <Card.Text>Don't have an account?
+
+                    <Card.Text className="text-align-centre">Don't have an account?
                        <a href = "">Sign Up</a>
                     </Card.Text>
+
                </Card.Body>
             </Card>
 
