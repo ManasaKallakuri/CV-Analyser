@@ -63,7 +63,7 @@ class Login extends Component{
                 </Form>
 
                     <Card.Text className="text-align-centre">Don't have an account?
-                       <a href = "">Sign Up</a>
+                       <a href = "#SignUp">Sign Up</a>
                     </Card.Text>
 
                </Card.Body>

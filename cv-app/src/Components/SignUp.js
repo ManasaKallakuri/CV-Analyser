@@ -87,7 +87,7 @@ class SignUp extends Component{
                 </Form>
 
                     <Card.Text>Have an account?
-                       <a href = "">Sign In</a>
+                       <a href = "#SignIn">Sign In</a>
                     </Card.Text>
 
                 </Card.Body>
