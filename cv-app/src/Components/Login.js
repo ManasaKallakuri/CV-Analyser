@@ -6,7 +6,7 @@ class Login extends Component{
         super()
 
         this.state = {
-            email: '',
+            username: '',
             password: ''
         }
             this.handleChange = this.handleChange.bind(this)
@@ -14,7 +14,7 @@ class Login extends Component{
     }
 
     Validate(){
-        return this.state.email.length>0 && this.state.password.length>0
+        return this.state.username.length>0 && this.state.password.length>0
     }
     
     handleChange = event =>{
@@ -44,7 +44,7 @@ class Login extends Component{
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group as = {Row} controlId="formBasicEmail">
                         <Col>
-                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Email ID" />
+                        <Form.Control name="username" value={this.state.username} onChange={this.handleChange} type="email" placeholder="Email ID" />
                         </Col>
                     </Form.Group>
 
@@ -63,7 +63,7 @@ class Login extends Component{
                 </Form>
 
                     <Card.Text className="text-align-centre">Don't have an account?
-                       <a href = "#SignUp">Sign Up</a>
+                       <a href = "/">Sign Up</a>
                     </Card.Text>
 
                </Card.Body>
