@@ -1,14 +1,17 @@
 import React,{Component} from "react"
 import {Card,Button,Container,Row,Col,Form} from "react-bootstrap"
+import axios from 'axios'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 
 class SignUp extends Component{
     constructor(){
         super()
 
         this.state = {
-            firstname: '',
-            lastname: '',
-            email: '',
+            firstName: '',
+            lastName: '',
+            username: '',
             password: '',
             confirmpassword: '',
         }
@@ -16,7 +19,7 @@ class SignUp extends Component{
 
     ValidateForm(){
         return(
-            this.state.email.length>0 &&
+            this.state.username.length>0 &&
             this.state.password.length>0 &&
             this.state.password === this.state.confirmpassword
         );
@@ -50,19 +53,19 @@ class SignUp extends Component{
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group as = {Row} controlId="formFirstName">
                         <Col>
-                        <Form.Control name="firstname" value={this.state.firstname} onChange={this.handleChange} type="name" placeholder="FirstName" />
+                        <Form.Control name="firstName" value={this.state.firstName} onChange={this.handleChange} type="text" placeholder="FirstName" />
                         </Col>
                     </Form.Group>
 
                     <Form.Group as = {Row} controlId="formLastName">
                         <Col>
-                        <Form.Control name="lastname" value={this.state.lastname} onChange={this.handleChange} type="t" placeholder="LastName" />
+                        <Form.Control name="lastName" value={this.state.lastName} onChange={this.handleChange} type="text" placeholder="LastName" />
                         </Col>
                     </Form.Group>
 
                     <Form.Group as = {Row} controlId="formBasicEmail">
                         <Col>
-                        <Form.Control name="email" value={this.state.email} onChange={this.handleChange} type="email" placeholder="Email ID" />
+                        <Form.Control name="username" value={this.state.username} onChange={this.handleChange} type="email" placeholder="Email ID" />
                         </Col>
                     </Form.Group>
 
@@ -87,7 +90,7 @@ class SignUp extends Component{
                 </Form>
 
                     <Card.Text>Have an account?
-                       <a href = "">Sign In</a>
+                       <a href = "/login">Sign In</a>
                     </Card.Text>
 
                 </Card.Body>
