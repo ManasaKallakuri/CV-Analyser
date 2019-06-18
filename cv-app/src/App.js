@@ -1,5 +1,17 @@
 import React,{Component} from 'react'
 import './App.css'
+<<<<<<< HEAD
+
+
+import Login from "./Components/Login"
+import SignUp from "./Components/SignUp"
+import Profile from "./Components/Profile"
+
+
+function App() {
+  return (
+    <Profile/>
+=======
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Login from "./Components/Login"
@@ -14,6 +26,7 @@ function App() {
       <Route exact path = "/dashboard" component={Header} />
     </Router>
     //<SignUp/>
+>>>>>>> master
   );
 }
 
