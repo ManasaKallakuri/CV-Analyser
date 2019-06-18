@@ -14,6 +14,7 @@ class SignUp extends Component{
             username: '',
             password: '',
             confirmpassword: '',
+            profileType: ''
         }
     }
 
@@ -36,6 +37,18 @@ class SignUp extends Component{
 
     handleSubmit = event =>{
         event.preventDefault();
+        fetch('/signup', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+        })
+
     }
 
    
@@ -82,10 +95,20 @@ class SignUp extends Component{
                     </Form.Group>
 
                     <Form.Group as={Row}>
-                        <Col sm={{ span: 10, offset: 5 }}>
+                    <Col sm={{ span: 10, offset: 5 }}>
+                    <Form.Check type="radio" name="profileType" value="Applicant" checked={this.state.profileType == "Applicant"} onChange = {this.handleChange} label="Applicant"/>
+                    <Form.Check type="radio" name="profileType" value="Company" checked={this.state.profileType == "Company"} onChange = {this.handleChange} label="Company"/>
+                    </Col>
+                    </Form.Group>
+
+                    <Form.Group as={Row}>
+                        <Col>
                         <Button variant="primary" type="submit" disabled={!this.ValidateForm()} >Sign Up</Button>
                         </Col>
+
                     </Form.Group>
+
+                   
 
                 </Form>
 

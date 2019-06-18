@@ -17,15 +17,14 @@ class Login extends Component{
         return this.state.username.length>0 && this.state.password.length>0
     }
     
-    handleChange = event =>{
-        this.setState(
-            {
-                [event.target.name] : event.target.value
-            }
-        );
+    handleChange(event){
+        const {name,value} = event.target
+        this.setState({
+            [name] : value
+        })
     }
 
-    handleSubmit = event =>{
+    handleSubmit(event){
         event.preventDefault();
     }
 
@@ -68,10 +67,9 @@ class Login extends Component{
 
                </Card.Body>
             </Card>
-
-        
         </Row>
-    </Container>     
+    </Container>
+        
         );
     }
 }
