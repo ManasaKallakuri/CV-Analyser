@@ -31,7 +31,7 @@ class Login extends Component{
     render(){
         return(
         <Container>
-        <div as= {Row}> <br/> <br/> <br/> <br/><br/><br/></div> 
+        <div as= {Row}> <br/> <br/> <br/> <br/><br/></div> 
         <Row className="justify-content-md-center">
         {/* <Col className = "align-item-center"> */}
     
