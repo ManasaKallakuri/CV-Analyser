@@ -38,7 +38,7 @@ class Login extends Component{
         .then((result) => {
             console.log(result)
             if(result.success === true){
-                this.props.history.push("/login")
+                this.props.history.push("/dashboard")
                 console.log("Logged In!", result.user)
             }
             else{
