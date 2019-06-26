@@ -6,6 +6,30 @@ import {Navbar,Form,Button,Nav,FormControl,NavDropdown} from "react-bootstrap"
 class Header extends React.Component{
     constructor(){
         super()
+
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(event){
+        event.preventDefault();
+        fetch('/logout', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            if(result.success === true){
+                this.props.history.push("/login")
+            }
+            else{
+                alert("Unable to logout!")
+            }
+        })
+
     }
 
     render(){
@@ -22,7 +46,7 @@ class Header extends React.Component{
                     <NavDropdown title="Username" id="collasible-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Manage Profile</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">Manage Jobs</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Logout</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3" onClick = {this.handleClick}>Logout</NavDropdown.Item>
                         {/* <NavDropdown.Divider /> */}
                         {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                     </NavDropdown>
