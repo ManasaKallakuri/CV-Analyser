@@ -10,6 +10,7 @@ class Login extends Component{
             password: ''
         }
             this.handleChange = this.handleChange.bind(this)
+            this.handleSubmit = this.handleSubmit.bind(this)
         
     }
 
@@ -38,6 +39,7 @@ class Login extends Component{
             console.log(result)
             if(result.success === true){
                 this.props.history.push("/login")
+                console.log("Logged In!", result.user)
             }
             else{
                 alert(result.err)
@@ -79,7 +81,7 @@ class Login extends Component{
 
                 </Form>
 
-                    <Card.Text className="text-align-centre">Don't have an account?
+                    <Card.Text className="text-align-centre">Don't have an account?&nbsp;
                        <a href = "/">Sign Up</a>
                     </Card.Text>
 
