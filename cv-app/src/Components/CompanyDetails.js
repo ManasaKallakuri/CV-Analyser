@@ -28,7 +28,9 @@ class CompanyDetails extends React.Component{
         })
     }
 
-    
+    handleSubmit(event){
+        event.preventDefault();
+    }
 
     render(){
         return(
@@ -42,7 +44,7 @@ class CompanyDetails extends React.Component{
                     Company Details
                 </Card.Title>
                 <br/>
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formName">
                         <Form.Label > Company </Form.Label>
                         <Form.Control 
@@ -148,7 +150,11 @@ class CompanyDetails extends React.Component{
                         />
                     </Form.Group>
 
-                    
+                    <Form.Group>
+                        <Col sm={{ span: 10, offset: 9}}>
+                        <Button variant="primary" type="submit">Submit</Button>
+                        </Col>
+                    </Form.Group>
 
                 </Form>
 

@@ -26,6 +26,24 @@ class Login extends Component{
 
     handleSubmit(event){
         event.preventDefault();
+        fetch('/login', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            if(result.success === true){
+                this.props.history.push("/login")
+            }
+            else{
+                alert(result.err)
+            }
+        })
+
     }
 
     render(){

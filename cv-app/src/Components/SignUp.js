@@ -49,11 +49,11 @@ class SignUp extends Component{
         .then((response) => response.json())
         .then((result) => {
             console.log(result)
-            if(result.signup === true){
+            if(result.success === true){
                 this.props.history.push("/login")
             }
             else{
-                alert("Username already exists!")
+                alert(result.err)
             }
         })
 
