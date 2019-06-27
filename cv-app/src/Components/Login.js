@@ -10,6 +10,7 @@ class Login extends Component{
             password: ''
         }
             this.handleChange = this.handleChange.bind(this)
+            this.handleSubmit = this.handleSubmit.bind(this)
         
     }
 
@@ -17,22 +18,40 @@ class Login extends Component{
         return this.state.username.length>0 && this.state.password.length>0
     }
     
-    handleChange = event =>{
-        this.setState(
-            {
-                [event.target.name] : event.target.value
-            }
-        );
+    handleChange(event){
+        const {name,value} = event.target
+        this.setState({
+            [name] : value
+        })
     }
 
-    handleSubmit = event =>{
+    handleSubmit(event){
         event.preventDefault();
+        fetch('/login', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            if(result.success === true){
+                this.props.history.push("/dashboard")
+                console.log("Logged In!", result.user)
+            }
+            else{
+                alert(result.err)
+            }
+        })
+
     }
 
     render(){
         return(
         <Container>
-        <div as= {Row}> <br/> <br/> <br/> <br/><br/><br/></div> 
+        <div as= {Row}> <br/> <br/> <br/> <br/><br/></div> 
         <Row className="justify-content-md-center">
         {/* <Col className = "align-item-center"> */}
     
@@ -62,16 +81,15 @@ class Login extends Component{
 
                 </Form>
 
-                    <Card.Text className="text-align-centre">Don't have an account?
+                    <Card.Text className="text-align-centre">Don't have an account?&nbsp;
                        <a href = "/">Sign Up</a>
                     </Card.Text>
 
                </Card.Body>
             </Card>
-
-        
         </Row>
-    </Container>     
+    </Container>
+        
         );
     }
 }

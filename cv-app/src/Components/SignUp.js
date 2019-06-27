@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import {Card,Button,Container,Row,Col,Form} from "react-bootstrap"
 import axios from 'axios'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 
 class SignUp extends Component{
@@ -14,35 +14,57 @@ class SignUp extends Component{
             username: '',
             password: '',
             confirmpassword: '',
+            profileType: ''
         }
+
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     ValidateForm(){
         return(
             this.state.username.length>0 &&
             this.state.password.length>0 &&
-            this.state.password === this.state.confirmpassword
+            this.state.password === this.state.confirmpassword && 
+            this.state.profileType
         );
     }
 
 
-    handleChange = event =>{
-        this.setState(
-            {
-                [event.target.name] : event.target.value
-            }
-        );
+    handleChange(event){
+        const {name,value} = event.target
+        this.setState({
+            [name] : value
+        })
     }
 
-    handleSubmit = event =>{
+    handleSubmit(event){
         event.preventDefault();
+        fetch('/signup', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            if(result.success === true){
+                this.props.history.push("/login")
+            }
+            else{
+                alert(result.err)
+            }
+        })
+
     }
 
    
     render(){
         return(
             <Container>
-            <div as= {Row}> <br/> <br/> <br/> <br/><br/><br/></div> 
+            <div as= {Row}> <br/> <br/> <br/> <br/><br/></div> 
             <Row className="justify-content-md-center">
             <Card style = {{width: '22rem'}} className="text-center">
                 <Card.Body>
@@ -81,17 +103,24 @@ class SignUp extends Component{
                     </Col>
                     </Form.Group>
 
+                    <Form.Group as={Row} controlId="formProfileType">
+                    <Col className="text-left">
+                    <Form.Check inline type="radio" name="profileType" value="Applicant" checked={this.state.profileType === "Applicant"} onChange = {this.handleChange} label="Applicant"/>
+                    <Form.Check inline type="radio" name="profileType" value="Company" checked={this.state.profileType === "Company"} onChange = {this.handleChange} label="Company"/>
+                    </Col>
+                    </Form.Group>
+
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10, offset: 5 }}>
                         <Button variant="primary" type="submit" disabled={!this.ValidateForm()} >Sign Up</Button>
                         </Col>
-                    </Form.Group>
 
+                    </Form.Group>
                 </Form>
 
-                    <Card.Text>Have an account?
-                       <a href = "/login">Sign In</a>
-                    </Card.Text>
+                <Card.Text>Have an account?&nbsp;
+                   <a href = "/login">Sign In</a>
+                </Card.Text>
 
                 </Card.Body>
             </Card>
