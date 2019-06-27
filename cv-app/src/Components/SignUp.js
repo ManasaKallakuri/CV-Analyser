@@ -1,7 +1,7 @@
 import React,{Component} from "react"
 import {Card,Button,Container,Row,Col,Form} from "react-bootstrap"
-import axios from 'axios'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+//import axios from 'axios'
+//import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 
 class SignUp extends Component{

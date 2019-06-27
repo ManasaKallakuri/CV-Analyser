@@ -1,5 +1,5 @@
 import React from "react"
-import ReactDOM from "react-dom"
+//import ReactDOM from "react-dom"
 import {Navbar,Form,Button,Nav,FormControl,NavDropdown} from "react-bootstrap"
 
 
@@ -7,7 +7,39 @@ class Header extends React.Component{
     constructor(){
         super()
 
+        this.state = {
+            username: ''
+        }
+
         this.handleClick = this.handleClick.bind(this)
+        this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(this)
+    }
+
+    hydrateStateWithLocalStorage() {
+        // for all items in state
+        for (let key in this.state) {
+          // if the key exists in localStorage
+          console.log(key)
+          if (localStorage.hasOwnProperty(key)) {
+            // get the key's value from localStorage
+            let value = localStorage.getItem(key);
+            console.log(value)
+            // parse the localStorage string and setState
+            try {
+              value = JSON.parse(value);
+              this.setState({ [key]: value });
+              console.log(this.state.username)
+            } catch (e) {
+              // handle empty string
+              this.setState({ [key]: value });
+            }
+          }
+        }
+    }
+
+    componentDidMount(){
+        this.hydrateStateWithLocalStorage();
+        //console.log(this.state.username)
     }
 
     handleClick(event){
@@ -43,7 +75,7 @@ class Header extends React.Component{
                 
                 <Nav className="ml-auto">
                     <Nav.Link href="#home">Post a Job</Nav.Link>
-                    <NavDropdown title="Username" id="collasible-nav-dropdown">
+                    <NavDropdown title={this.state.username} id="collasible-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Manage Profile</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">Manage Jobs</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3" onClick = {this.handleClick}>Logout</NavDropdown.Item>
