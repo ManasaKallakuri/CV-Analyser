@@ -6,16 +6,16 @@ class Profile extends Component{
     constructor(){
         super()
         this.state = {
-            name: '',
+            fullName: '',
             email: '',
             location: '',
-            contactnumber: '',
-            linkedin: '',
-            skype: '',
-            github: '',
-            codeforces: '',
-            codechef: '',
-            hackerrank: ''
+            mobileNumber: '',
+            linkedinID: '',
+            skypeID: '',
+            githubID: '',
+            codeForces: '',
+            codeChef: '',
+            hackerRank: ''
         }
         this.handleChange = this.handleChange.bind(this)
 
@@ -70,7 +70,7 @@ class Profile extends Component{
                     <Form.Group as = {Row} controlId="formName">
                         <Col>
                         <Form.Label>Name</Form.Label>
-                        <Form.Control name="name" value={this.state.name} onChange={this.handleChange} type="text"/>
+                        <Form.Control name="fullName" value={this.state.fullName} onChange={this.handleChange} type="text"/>
                         </Col>
                     </Form.Group>
                         
@@ -84,7 +84,7 @@ class Profile extends Component{
                     <Form.Group as = {Row} controlId="formcontact">
                         <Col>
                         <Form.Label>Mobile Number</Form.Label>
-                        <Form.Control name="contactnumber" value={this.state.contactnumber} onChange={this.handleChange} type="number"/>
+                        <Form.Control name="mobileNumber" value={this.state.mobileNumber} onChange={this.handleChange} type="number"/>
                         </Col>
                     </Form.Group>
 
@@ -98,7 +98,7 @@ class Profile extends Component{
                     <Form.Group as = {Row} controlId="formlinkedin">
                         <Col>
                         <Form.Label>LinkedIn ID</Form.Label>
-                        <Form.Control name="linkedin" value={this.state.linkedin} onChange={this.handleChange} type="text"/>
+                        <Form.Control name="linkedinID" value={this.state.linkedinID} onChange={this.handleChange} type="text"/>
                         </Col>
                     </Form.Group>
 
@@ -106,14 +106,14 @@ class Profile extends Component{
                     <Form.Group as = {Row} controlId="formskype">
                         <Col>
                         <Form.Label>Skype Profile</Form.Label>
-                        <Form.Control name="skype" value={this.state.skype} onChange={this.handleChange} type="text"/>
+                        <Form.Control name="skypeID" value={this.state.skypeID} onChange={this.handleChange} type="text"/>
                         </Col>
                     </Form.Group>
 
                     <Form.Group as = {Row} controlId="formgithub">
                         <Col>
                         <Form.Label>GitHub Profile</Form.Label>
-                        <Form.Control name="github" value={this.state.github} onChange={this.handleChange} type="text"/>
+                        <Form.Control name="githubID" value={this.state.githubID} onChange={this.handleChange} type="text"/>
                         </Col>
                     </Form.Group>
                     
@@ -130,26 +130,26 @@ class Profile extends Component{
                         <Form.Group as = {Row} controlId="formcodeforces">
                             <Col>
                             <Form.Label>Codeforces Profile</Form.Label>
-                            <Form.Control name="codeforces" value={this.state.codeforces} onChange={this.handleChange} type="text"/>
+                            <Form.Control name="codeForces" value={this.state.codeForces} onChange={this.handleChange} type="text"/>
                             </Col>
                         </Form.Group>
 
                         <Form.Group as = {Row} controlId="formcodechef">
                             <Col>
                             <Form.Label>CodeChef Profile</Form.Label>
-                            <Form.Control name="codechef" value={this.state.codechef} onChange={this.handleChange} type="text"/>
+                            <Form.Control name="codeChef" value={this.state.codeChef} onChange={this.handleChange} type="text"/>
                             </Col>
                         </Form.Group>
 
                         <Form.Group as = {Row} controlId="formhackerrank">
                             <Col>
                             <Form.Label>Hackerrank Profile</Form.Label>
-                            <Form.Control name="hackerrank" value={this.state.hackerrank} onChange={this.handleChange} type="text"/>
+                            <Form.Control name="hackerRank" value={this.state.hackerRank} onChange={this.handleChange} type="text"/>
                             </Col>
                         </Form.Group>
 
                         
-                       `<div onChange = {this.setOccupation.bind(this)}>
+                        <div onChange = {this.setOccupation.bind(this)}>
                            <p>Occupation</p>
                            <input type="radio" value = "Student" name = "occupation"/>Student
                            <br/>
@@ -158,7 +158,8 @@ class Profile extends Component{
                            <input type="radio" value = "Unemployed" name = "occupation"/>Unemployed
                         </div>
 
-                        `<div onChange = {this.setInterest.bind(this)}>
+                        <div onChange = {this.setInterest.bind(this)}>
+                            <br/>
                            <p>Full time Oppurtunity or Internship?</p>
                            <input type="radio" value = "Internship" name = "interest"/>Internship
                            <br/>
