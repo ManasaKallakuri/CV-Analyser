@@ -56,6 +56,8 @@ class Header extends React.Component{
         .then((result) => {
             console.log(result)
             if(result.success === true){
+                //this.setState({username : ''})
+                localStorage.removeItem('username')
                 this.props.history.push("/login")
             }
             else{
