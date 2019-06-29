@@ -52,7 +52,7 @@ class CompanyDetails extends React.Component{
                             value={this.state.name} 
                             onChange={this.handleChange} 
                             type="text" 
-                            placeholder="Company" 
+                            //placeholder="Company" 
                             required
                         />
                     </Form.Group>
@@ -100,7 +100,7 @@ class CompanyDetails extends React.Component{
                             value={this.state.headquaters} 
                             onChange={this.handleChange} 
                             type="text" 
-                            placeholder="Headquaters" 
+                            //placeholder="Headquaters" 
                             required
                         />
                     </Form.Group>

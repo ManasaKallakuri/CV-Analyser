@@ -7,6 +7,7 @@ class Profile extends Component{
         super()
         this.state = {
 
+            username: '',
             fullName: '',
             mobileNumber: '',
             location: '',
@@ -20,7 +21,36 @@ class Profile extends Component{
             type: ''
         }
         this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.hydrateStateWithLocalStorage = this.hydrateStateWithLocalStorage.bind(this)
+    }
 
+    hydrateStateWithLocalStorage() {
+        // for all items in state
+        for (let key in this.state) {
+          // if the key exists in localStorage
+         // console.log(key)
+          if (localStorage.hasOwnProperty(key)) {
+            // get the key's value from localStorage
+            let value = localStorage.getItem(key);
+            //console.log(value)
+            // parse the localStorage string and setState
+            try {
+              value = JSON.parse(value);
+              this.setState({ [key]: value });
+              //console.log(this.state.username)
+            } catch (e) {
+              // handle empty string
+              this.setState({ [key]: value });
+            }
+          }
+        }
+    }
+
+    componentDidMount(){
+        this.hydrateStateWithLocalStorage();
+        //console.log(this.state.username)
     }
 
     handleChange(event){
@@ -30,9 +60,32 @@ class Profile extends Component{
         })
     }
 
-    onChange(e) {
-        let files = e.target.files;
+    onChange(event) {
+        let files = event.target.files;
         console.warn("data file" , files);
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        fetch('/applicant/edit', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+            //user: JSON.stringify(this.state.username)
+        })
+        .then((response) => response.json())
+        .then((result) => {
+            console.log(result)
+            if(result.success === true){
+                this.props.history.push("/dashboard")
+            }
+            else{
+                alert(result.err)
+            }
+        })
+
     }
     
     render(){
@@ -59,6 +112,14 @@ class Profile extends Component{
                             //placeholder="Name" 
                             required
                         />
+                    </Form.Group>
+
+                    <Form.Group controlId="formPlaintextEmail">
+                        <Form.Label>
+                        Username
+                        </Form.Label>
+                        <Form.Control readOnly 
+                        defaultValue={this.state.username} />
                     </Form.Group>
 
                     <Form.Row>

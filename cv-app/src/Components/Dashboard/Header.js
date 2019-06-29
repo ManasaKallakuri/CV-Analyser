@@ -19,16 +19,16 @@ class Header extends React.Component{
         // for all items in state
         for (let key in this.state) {
           // if the key exists in localStorage
-          console.log(key)
+          //console.log(key)
           if (localStorage.hasOwnProperty(key)) {
             // get the key's value from localStorage
             let value = localStorage.getItem(key);
-            console.log(value)
+            //console.log(value)
             // parse the localStorage string and setState
             try {
               value = JSON.parse(value);
               this.setState({ [key]: value });
-              console.log(this.state.username)
+              //console.log(this.state.username)
             } catch (e) {
               // handle empty string
               this.setState({ [key]: value });
