@@ -42,7 +42,14 @@ class Login extends Component{
                 let user  = result.user.username
                 localStorage.setItem("username",user)
                 console.log(user)
-                this.props.history.push("/dashboard")
+                if(result.user.updateProfile)
+                    this.props.history.push("/dashboard")
+                else if(result.user.profileType === "Applicant"){
+                    this.props.history.push("/profile")
+                }
+                else{
+                    this.props.history.push("/company")
+                }
             }
             else{
                 alert(result.err)
