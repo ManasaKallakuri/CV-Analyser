@@ -49,7 +49,8 @@ class Header extends React.Component{
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(this.state),
+            user: JSON.stringify(this.state.username)
         })
         .then((response) => response.json())
         .then((result) => {
