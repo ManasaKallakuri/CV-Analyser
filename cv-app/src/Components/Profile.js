@@ -18,7 +18,8 @@ class Profile extends Component{
             codeChef: '',
             hackerRank: '',
             occupation: '',
-            type: ''
+            type: '',
+            resume: null
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -61,11 +62,16 @@ class Profile extends Component{
     }
 
     onChange(event) {
-        let files = event.target.files;
-        console.warn("data file" , files);
+        //let files = event.target.files[0];
+        //console.warn("data file" , files);
+        this.setState({
+            resume: event.target.files[0]
+            //loaded: 0,
+        })
     }
 
     handleSubmit(event){
+        console.log(this.state.resume)
         event.preventDefault();
         fetch('/applicant/edit', {
             method: "POST",
@@ -305,7 +311,7 @@ class Profile extends Component{
                         <br/>
                             <p><b>Upload Resume</b></p>
                             {/* <Button variant="primary" onChange={(e) =>this.onChange(e)}>Choose File</Button> */}
-                            <input type="file" name="file" onChange={(e) =>this.onChange(e)} required />
+                            <input type="file" name="resume" onChange={(e) =>this.onChange(e)} required />
                     </div>
 
                     <Form.Group>
