@@ -74,13 +74,36 @@ class Profile extends Component{
     handleSubmit(event){
         event.preventDefault();
         const data = new FormData()
+        this.setState({
+            resume: {
+                name: this.state.username + '.pdf'
+            }
+        })
         data.append('file', this.state.resume)
-        data.append('body', this.state )
-        axios.post('/applicant/edit', data)
+        console.log(this.state.resume)
+        //data.append('body', this.state)
+        axios.post('/applicant/upload', data)
         .then(res => {
             console.log(res)
             if(res.success === true){
-                this.props.history.push("/dashboard")
+                fetch('/applicant/edit', {
+                        method: "POST",
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(this.state)
+                        //user: JSON.stringify(this.state.username)
+                    })
+                    .then((response) => response.json())
+                    .then((result) => {
+                        console.log(result.message)
+                        // if(result.success === true){
+                        //     this.props.history.push("/dashboard")
+                        // }
+                        // else{
+                        //     alert(result.err)
+                        // }
+                    })
             }
             else{
                 alert(res.err)
