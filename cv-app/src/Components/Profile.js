@@ -72,11 +72,19 @@ class Profile extends Component{
     }
 
     handleSubmit(event){
+        event.preventDefault();
         const data = new FormData()
         data.append('file', this.state.resume)
-        axios.post("/applicant/edit", data, {})
+        data.append('body', this.state )
+        axios.post('/applicant/edit', data)
         .then(res => {
-            console.log(res.statusText)
+            console.log(res)
+            if(res.success === true){
+                this.props.history.push("/dashboard")
+            }
+            else{
+                alert(res.err)
+            }
         })
         // console.log(this.state.resume)
         // const file={}
