@@ -72,13 +72,16 @@ class Profile extends Component{
 
     handleSubmit(event){
         console.log(this.state.resume)
+        const file={}
+        file.append('file',this.state.resume)
         event.preventDefault();
         fetch('/applicant/edit', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(this.state),
+            file
             //user: JSON.stringify(this.state.username)
         })
         .then((response) => response.json())
