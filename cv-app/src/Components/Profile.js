@@ -1,5 +1,6 @@
 import React,{Component} from "react"
 import {Card,Form,Button,Row,Col,Container} from "react-bootstrap"
+import axios from 'axios'
 
 
 class Profile extends Component{
@@ -71,30 +72,35 @@ class Profile extends Component{
     }
 
     handleSubmit(event){
-        console.log(this.state.resume)
-        const file={}
-        file.append('file',this.state.resume)
-        event.preventDefault();
-        fetch('/applicant/edit', {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(this.state),
-            file
-            //user: JSON.stringify(this.state.username)
+        const data = new FormData()
+        data.append('file', this.state.resume)
+        axios.post("/applicant/edit", data, {})
+        .then(res => {
+            console.log(res.statusText)
         })
-        .then((response) => response.json())
-        .then((result) => {
-            console.log(result)
-            if(result.success === true){
-                this.props.history.push("/dashboard")
-            }
-            else{
-                alert(result.err)
-            }
-        })
-
+        // console.log(this.state.resume)
+        // const file={}
+        // file.append('file',this.state.resume)
+        // event.preventDefault();
+        // fetch('/applicant/edit', {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(this.state),
+        //     file
+        //     user: JSON.stringify(this.state.username)
+        // })
+        // .then((response) => response.json())
+        // .then((result) => {
+        //     console.log(result)
+        //     if(result.success === true){
+        //         this.props.history.push("/dashboard")
+        //     }
+        //     else{
+        //         alert(result.err)
+        //     }
+        // })
     }
     
     render(){
