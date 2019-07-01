@@ -74,12 +74,12 @@ class Profile extends Component{
     handleSubmit(event){
         event.preventDefault();
         const data = new FormData()
-        this.setState({
-            resume: {
-                name: this.state.username + '.pdf'
-            }
-        })
-        data.append('file', this.state.resume)
+        // this.setState({
+        //     resume: {
+        //         name: this.state.username + '.pdf'
+        //     }
+        // })
+        data.append('file', this.state.resume, this.state.username + '.pdf')
         console.log(this.state.resume)
         //data.append('body', this.state)
         axios.post('/applicant/upload', data)
