@@ -35,7 +35,7 @@ class CompanyDetails extends React.Component{
     render(){
         return(
             <Container>
-            <div as= {Row}> <br/> <br/> <br/> <br/><br/></div> 
+            
             <Row className="justify-content-md-center">
             <Card style = {{width: '32rem'}} >
                 <Card.Body>
