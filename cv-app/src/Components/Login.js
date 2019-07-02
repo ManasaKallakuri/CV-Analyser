@@ -38,8 +38,18 @@ class Login extends Component{
         .then((result) => {
             console.log(result)
             if(result.success === true){
-                this.props.history.push("/dashboard")
-                console.log("Logged In!", result.user)
+                console.log("Logged In!", result.user.username)
+                let user  = result.user.username
+                localStorage.setItem("username",user)
+                console.log(user)
+                if(result.user.updateProfile)
+                    this.props.history.push("/dashboard")
+                else if(result.user.profileType === "Applicant"){
+                    this.props.history.push("/profile")
+                }
+                else{
+                    this.props.history.push("/company")
+                }
             }
             else{
                 alert(result.err)

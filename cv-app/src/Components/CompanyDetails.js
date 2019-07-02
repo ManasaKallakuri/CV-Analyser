@@ -52,12 +52,12 @@ class CompanyDetails extends React.Component{
                             value={this.state.name} 
                             onChange={this.handleChange} 
                             type="text" 
-                            placeholder="Company" 
+                            //placeholder="Company" 
                             required
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="formCompUser">
+                    {/* <Form.Group controlId="formCompUser">
                         <Form.Label > Username </Form.Label>
                         <Form.Control 
                             name="username" 
@@ -67,7 +67,7 @@ class CompanyDetails extends React.Component{
                             placeholder="Email ID" 
                             required
                         />
-                    </Form.Group>
+                    </Form.Group> */}
 
                     <Form.Group controlId="formWebsite">
                         <Form.Label>Company Website</Form.Label> 
@@ -100,7 +100,7 @@ class CompanyDetails extends React.Component{
                             value={this.state.headquaters} 
                             onChange={this.handleChange} 
                             type="text" 
-                            placeholder="Headquaters" 
+                            //placeholder="Headquaters" 
                             required
                         />
                     </Form.Group>
